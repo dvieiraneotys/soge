@@ -30,12 +30,12 @@ pipeline {
       }
       steps {
         git(branch: "$CPV_ENV",
-            url: 'http://jenkins:9090/git/tester/CPVWeatherCrisis.git')
+            url: 'http://jenkins:9090/git/tester/BaseProject.git')
         unstash 'LG'
         unstash 'scenario'
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
-            project: "$WORKSPACE/CPVWeatherCrisis.nlp",
+            project: "$WORKSPACE/BaseProject.nlp",
             testName: 'Jenkins Test (build ${BUILD_NUMBER})',
             testDescription: 'NeoLoad as Code test',
             commandLineOption: "-project $WORKSPACE/neoload/test/demotest.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
