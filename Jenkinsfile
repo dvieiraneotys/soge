@@ -17,6 +17,7 @@ pipeline {
             sh 'docker-compose -f neoload/lg/docker-compose.yml up -d'
             stash includes: 'neoload/lg/lg.yaml', name: 'LG'
             stash includes: 'neoload/test/demotest.yaml', name: 'scenario'
+            stash includes: 'neoload/test/data/tokens.csv', name: 'tokens'
           }
         }
       }
@@ -33,6 +34,7 @@ pipeline {
             url: 'http://jenkins:9090/git/tester/BaseProject.git')
         unstash 'LG'
         unstash 'scenario'
+        unstash 'tokens'
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
             project: "$WORKSPACE/BaseProject.nlp",
