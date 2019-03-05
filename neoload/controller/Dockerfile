@@ -21,4 +21,8 @@ VOLUME /home/${user}/.jenkins
 VOLUME ${AGENT_WORKDIR}
 WORKDIR /home/${user}
 
+ENV CONTROLLER_XMX=-Xmx512m
+
+EXPOSE 7100
+
 ENTRYPOINT []
