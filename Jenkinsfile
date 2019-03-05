@@ -28,7 +28,7 @@ pipeline {
     stage('API Tests') {
       agent {
         dockerfile {
-          args '--user root -v /tmp:/tmp --network cpv'
+          args '--user root -v /tmp:/tmp'
           dir 'neoload/controller'
         }
       }
