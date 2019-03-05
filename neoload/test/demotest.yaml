@@ -2,7 +2,7 @@ name: Demo
 variables:
 - file:
     name: neoload_token
-    path: /Users/ttheol/demo/webinar/data/tokens.csv
+    path: data/tokens.csv
     column_names: ["token"]
 servers:
 - name: neoloadweb_server
