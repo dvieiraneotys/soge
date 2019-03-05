@@ -22,7 +22,7 @@ pipeline {
         stash includes: "neoload/test/$CPV_ENV/scenario.yaml", name: 'scenario'
       }
     }
-    stage('API Tests') {
+   /* stage('API Tests') {
       agent {
         dockerfile {
           args '--user root -v /tmp:/tmp --network cpv'
@@ -62,7 +62,7 @@ pipeline {
                   ]
             }
       }
-    }
+    }*/
     stage('Stop NeoLoad infrastructure') {
       agent { label 'master' }
       steps {
