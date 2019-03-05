@@ -24,7 +24,7 @@ pipeline {
     stage('API Tests') {
       agent {
         dockerfile {
-          args '--user root -v /tmp:/tmp'
+          args '--user root -v /tmp:/tmp --network=lg_default'
           dir 'neoload/controller'
         }
       }
