@@ -29,16 +29,13 @@ pipeline {
       steps {
         git(branch: "$CPV_ENV",
             url: 'http://jenkins:9090/git/tester/CPVWeatherCrisis.git')
-        unstash 'local-LG'
-        unstash 'docker-LG'
-        unstash 'scenario'
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
             project: "$WORKSPACE/CPVWeatherCrisis.nlp",
-            testName: 'API Limit Test (build ${BUILD_NUMBER})',
-            testDescription: 'WeatherCrisis API Limit Testing (Mysql + Rest API)',
-            commandLineOption: "-project $WORKSPACE/neoload/test/$CPV_ENV/scenario.yaml -nlweb -L API=$LG $APM_LG -nlwebToken <NeoLoad Web Token>",
-            scenario: 'API Limit Test', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 51],
+            testName: 'Jenkins Test (build ${BUILD_NUMBER})',
+            testDescription: 'NeoLoad as Code test',
+            commandLineOption: "-project $WORKSPACE/neoload/test/demotest.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
+            scenario: 'DemoScenario', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 51],
             trendGraphs: [
                 [name: 'API Response time', curve: ['Component Testing_REST>Actions>API 10 calls>REST API call'], statistic: 'average'],
                 [name: 'MySQL Response time (Select a post)', curve: ['Component Testing_MySQL>Actions>MySQL'], statistic: 'average'],

@@ -5,6 +5,3 @@ infrastructures:
     - name: Docker
       machines:
       - docker-lg1
-    - name: local
-      machines:
-      - localhost
