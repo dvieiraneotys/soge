@@ -22,7 +22,7 @@ pipeline {
         stash includes: "neoload/test/$CPV_ENV/scenario.yaml", name: 'scenario'
       }
     }
-   /* stage('API Tests') {
+    stage('API Tests') {
       agent {
         dockerfile {
           args '--user root -v /tmp:/tmp --network cpv'
@@ -48,7 +48,7 @@ pipeline {
                 'ErrorRate'
                 ]
           }
-          script {
+   /*       script {
             neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
               project: "$WORKSPACE/CPVWeatherCrisis.nlp",
               testName: 'API Nominal Test (build ${BUILD_NUMBER})',
@@ -60,9 +60,9 @@ pipeline {
                   [name: 'MySQL Response time (Select a post)', curve: ['Component Testing_MySQL>Actions>MySQL'], statistic: 'average'],
                   'ErrorRate'
                   ]
-            }
+            }*/
       }
-    }*/
+    }
     stage('Stop NeoLoad infrastructure') {
       agent { label 'master' }
       steps {
