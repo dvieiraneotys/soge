@@ -3,7 +3,7 @@ FROM neotys/neoload-controller:6.8.0
 ARG user=neoload
 ENV HOME /home/${user}
 
-ARG JENKINS_VERSION=3.26
+ARG JENKINS_VERSION=3.27
 ARG JENKINS_WORKDIR=/home/${user}/agent
 
 USER root
