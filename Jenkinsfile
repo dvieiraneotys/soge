@@ -22,6 +22,13 @@ pipeline {
         }
       }
     }
+    stage('Join Load Generators to Application') {
+      agent{label 'master'}
+      steps{
+        sh 'docker network connect docker-compose_default docker-lg1'
+      }
+
+    }
     stage('API Tests') {
       agent {
         dockerfile {
