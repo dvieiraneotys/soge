@@ -12,7 +12,7 @@ pipeline {
     stage('Start NeoLoad infrastructure') {
       agent { label 'master' }
       steps {
-        git(branch: "$CPV_ENV",
+        git(branch: "$NEOLOAD_VERSION",
           credentialsId: 'CodeCommit',
           url: 'https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/infrastructure') 
         sh 'ls -la'
