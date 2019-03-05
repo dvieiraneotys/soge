@@ -70,7 +70,6 @@ pipeline {
           credentialsId: 'CodeCommit',
           url: 'https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/infrastructure') 
         sh 'docker-compose -f neoload/lg/docker-compose.yml down'
-        sh 'docker-compose rm neoload/lg/docker-compose.yml'
       }
     }
     stage('Stop application'){
@@ -79,7 +78,7 @@ pipeline {
         git(branch:'master',
           url:'https://github.com/microservices-demo/microservices-demo') 
         sh 'docker-compose -f deploy/docker-compose/docker-compose.yml down'
-        sh 'docker-compose rm deploy/docker-compose/docker-compose.yml'
+        sh 'docker-compose rm -f'
       }
     }      
   }
