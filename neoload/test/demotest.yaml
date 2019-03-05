@@ -7,7 +7,7 @@ variables:
     is_first_line_column_names: false
 servers:
 - name: sockshop
-  host: jenkins
+  host: edge-router
   scheme: http
 user_paths:
 - name: Catalogue
