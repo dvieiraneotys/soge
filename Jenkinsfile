@@ -15,6 +15,8 @@ pipeline {
           agent { label 'master' }
           steps {
             sh 'docker-compose -f neoload/lg/docker-compose.yml up -d'
+            stash includes: 'neoload/lg/lg.yaml', name: 'LG'
+            stash includes: 'neoload/test/demotest.yaml', name: 'scenario'
           }
         }
       }
@@ -29,6 +31,8 @@ pipeline {
       steps {
         git(branch: "$CPV_ENV",
             url: 'http://jenkins:9090/git/tester/CPVWeatherCrisis.git')
+        unstash 'LG'
+        unstash 'scenario'
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
             project: "$WORKSPACE/CPVWeatherCrisis.nlp",
