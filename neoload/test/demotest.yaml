@@ -4,31 +4,25 @@ variables:
     name: neoload_token
     path: neoload/test/data/tokens.csv
     column_names: ["token"]
+    is_first_line_column_names: false
 servers:
-- name: neoloadweb_server
-  host: neoload.saas.neotys.com
-  scheme: https
+- name: sockshop
+  host: jenkins
+  scheme: http
 user_paths:
-- name: TestList
+- name: Catalogue
   actions:
     steps:
-    - request:
-        url: https://neoload.saas.neotys.com/v1/tests?status=RUNNING&limit=50&offset=0
-        headers:
-        -  accounttoken: a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6
-    - think_time: 1s
     - transaction:
-        name: Get Test List
+        name: Get Catalogue List
         steps:
         - request:
-            server: neoloadweb_server
-            url: /v1/tests?status=RUNNING&limit=50&offset=0
-            headers:
-            -  accounttoken: ${neoload_token.token}
+            server: sockshop
+            url: /catalogue
 populations:
 - name: MyPopulation
   user_paths:
-  - name: TestList
+  - name: Catalogue
     distribution: 100%
 scenarios:
 - name: DemoScenario
