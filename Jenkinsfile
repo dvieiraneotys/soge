@@ -29,7 +29,7 @@ pipeline {
         }
       }
       steps {
-        git(branch: "$CPV_ENV",
+        git(branch: "master",
             url: 'http://jenkins:9090/git/tester/BaseProject.git')
         unstash 'LG'
         unstash 'scenario'
