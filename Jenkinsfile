@@ -15,7 +15,6 @@ pipeline {
         git(branch: "$NL_VERSION",
           credentialsId: 'CodeCommit',
           url: 'https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/infrastructure') 
-        sh 'ls -la'
         sh 'docker-compose -f neoload/lg/docker-compose.yml up -d'
         stash includes: 'neoload/lg/lg.yaml', name: 'yaml-LG'
         stash includes: 'neoload/lg/local-lg.txt', name: 'local-LG'
