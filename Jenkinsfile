@@ -18,7 +18,6 @@ pipeline {
               credentialsId: 'CodeCommit',
               url: 'https://git-codecommit.eu-west-1.amazonaws.com/v1/repos/infrastructure') 
             sh 'docker-compose -f neoload/lg/docker-compose.yml up -d'
-            stash includes: 'neoload/lg/lg.yaml', name: 'yaml-LG'
             stash includes: 'neoload/lg/local-lg.txt', name: 'local-LG'
             stash includes: 'neoload/lg/docker-lg.txt', name: 'docker-LG'
             stash includes: "neoload/test/$CPV_ENV/scenario.yaml", name: 'scenario'
@@ -26,7 +25,7 @@ pipeline {
         }
       }
     }
-    /*stage('API Tests') {
+    stage('API Tests') {
       agent {
         dockerfile {
           args '--user root -v /tmp:/tmp --network cpv'
@@ -64,9 +63,9 @@ pipeline {
                   [name: 'MySQL Response time (Select a post)', curve: ['Component Testing_MySQL>Actions>MySQL'], statistic: 'average'],
                   'ErrorRate'
                   ]
-            }
+            }*/
       }
-    }*/
+    }
     stage('Stop Infrastructure') {
       parallel{
         stage('Stop NeoLoad infrastructure') {
