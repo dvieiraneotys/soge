@@ -78,7 +78,6 @@ pipeline {
         git(branch:'master',
           url:'https://github.com/microservices-demo/microservices-demo') 
         sh 'docker-compose -f deploy/docker-compose/docker-compose.yml down'
-        sh 'docker-compose rm -f'
       }
     }      
   }
