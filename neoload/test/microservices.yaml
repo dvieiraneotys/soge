@@ -33,4 +33,11 @@ scenarios:
       max_users: 50
       increment_users: 1
       increment_every: 1 iteration
+      duration: 1m
+- name: CatalogueStandard
+  populations:
+  - name: Catalogue
+    constant_load:
+      users: 10
       duration: 2m
+      rampup: 10s
