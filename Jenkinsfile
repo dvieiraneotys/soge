@@ -40,7 +40,7 @@ pipeline {
         git(branch: "master",
             url: 'http://jenkins:9090/git/tester/BaseProject.git')
         unstash 'LG'
-        unstash 'scenario'
+        unstash 'microservices'
         unstash 'tokens'
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
