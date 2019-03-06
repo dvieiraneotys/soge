@@ -30,7 +30,7 @@ scenarios:
   - name: Catalogue
     rampup_load:
       min_users: 1
-      max_users: 50
+      max_users: 200
       increment_users: 1
       increment_every: 1 iteration
       duration: 1m
