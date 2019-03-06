@@ -1,4 +1,4 @@
-name: Demo
+name: MicroServices
 variables:
 - file:
     name: neoload_token
@@ -10,7 +10,7 @@ servers:
   host: edge-router
   scheme: http
 user_paths:
-- name: Catalogue
+- name: CatalogueList
   actions:
     steps:
     - transaction:
@@ -20,14 +20,17 @@ user_paths:
             server: sockshop
             url: /catalogue
 populations:
-- name: MyPopulation
+- name: Catalogue
   user_paths:
-  - name: Catalogue
+  - name: CatalogueList
     distribution: 100%
 scenarios:
-- name: DemoScenario
+- name: CatalogueLimit
   populations:
-  - name: MyPopulation
-    constant_load:
-      users: 1
+  - name: Catalogue
+    rampup_load:
+      min_users: 1
+      max_users: 50
+      increment_users: 1
+      increment_every: 1 iteration
       duration: 2m
