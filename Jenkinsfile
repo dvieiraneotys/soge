@@ -49,7 +49,7 @@ pipeline {
             commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
             scenario: 'CatalogueLimit', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 200],
             trendGraphs: [
-                [name: 'API Response time', curve: ['CatalogueList>Actions>Get Catalogue List'], statistic: 'average'],
+                [name: 'Limit test Catalogue API Response time', curve: ['CatalogueList>Actions>Get Catalogue List'], statistic: 'average'],
                 'ErrorRate'
                 ]
         }
@@ -61,7 +61,7 @@ pipeline {
             commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
             scenario: 'CatalogueStandard', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 50],
             trendGraphs: [
-                [name: 'API Response time', curve: ['CatalogueList>Actions>Get Catalogue List'], statistic: 'average'],
+                [name: 'Catalogue API Baseline Response time', curve: ['CatalogueList>Actions>Get Catalogue List'], statistic: 'average'],
                 'ErrorRate'
                 ]
         }
