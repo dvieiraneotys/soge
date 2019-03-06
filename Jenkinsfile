@@ -44,8 +44,20 @@ pipeline {
         script {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
             project: "$WORKSPACE/BaseProject.nlp",
+            testName: 'Catalogue Unit Test (build ${BUILD_NUMBER})',
+            testDescription: 'Baseline catalogue unit test',
+            commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
+            scenario: 'CatalogueUnit', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 1],
+            trendGraphs: [
+                [name: 'Unit test Catalogue API Response time', curve: ['CatalogueList>Actions>Get Catalogue List'], statistic: 'average'],
+                'ErrorRate'
+                ]
+        }
+        script {
+          neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
+            project: "$WORKSPACE/BaseProject.nlp",
             testName: 'Catalogue Limit Test (build ${BUILD_NUMBER})',
-            testDescription: 'Baseline catalogue limit test on build',
+            testDescription: 'Baseline catalogue limit test',
             commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
             scenario: 'CatalogueLimit', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 200],
             trendGraphs: [
@@ -57,7 +69,7 @@ pipeline {
           neoloadRun executable: '/home/neoload/neoload/bin/NeoLoadCmd',
             project: "$WORKSPACE/BaseProject.nlp",
             testName: 'Catalogue Standard Test (build ${BUILD_NUMBER})',
-            testDescription: 'Baseline catalogue load test on build',
+            testDescription: 'Baseline catalogue load test',
             commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
             scenario: 'CatalogueStandard', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 50],
             trendGraphs: [

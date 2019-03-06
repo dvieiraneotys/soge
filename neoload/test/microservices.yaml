@@ -41,3 +41,9 @@ scenarios:
       users: 10
       duration: 2m
       rampup: 10s
+- name: CatalogueUnit
+  populations:
+  - name: Catalogue
+    constant_load:
+      users: 1
+      duration: 100 iterations
