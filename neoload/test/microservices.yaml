@@ -32,8 +32,8 @@ scenarios:
       min_users: 1
       max_users: 200
       increment_users: 1
-      increment_every: 2s
-      duration: 100s
+      increment_every: 1s
+      duration: 200s
 - name: CatalogueStandard
   populations:
   - name: Catalogue
