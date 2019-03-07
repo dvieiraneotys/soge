@@ -19,6 +19,16 @@ user_paths:
         - request:
             server: sockshop
             url: /catalogue
+            extractors:
+            - name: itemId
+              jsonpath: $..id
+              match_number: 0
+    - transaction:
+        name: Open Article
+        steps:
+        - request:
+            server: sockshop
+            url: /catalogue/${itemId}
 populations:
 - name: Catalogue
   user_paths:

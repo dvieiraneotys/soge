@@ -85,9 +85,8 @@ pipeline {
       agent{ label 'master' }
       steps {
         archiveArtifacts 'results/**'
-        archiveArtifacts 'Jenkinsfile'
         archiveArtifacts 'neoload/**'
-        archiveArtifacts 'sockshop/**'
+        archiveArtifacts 'sockshop/catalogue/**'
         sh 'docker volume prune -f'
         cleanWs()
       }
