@@ -91,6 +91,7 @@ pipeline {
         archiveArtifacts 'results/**'
         archiveArtifacts 'Jenkinsfile'
         archiveArtifacts 'neoload/**'
+        archiveArtifacts 'sockshop/**'
         sh 'docker volume prune -f'
         cleanWs()
       }
