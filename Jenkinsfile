@@ -90,6 +90,7 @@ pipeline {
       steps {
         archiveArtifacts 'results/**'
         archiveArtifacts 'Jenkinsfile'
+        archiveArtifacts 'neoload/**'
         cleanWs()
       }
     }
