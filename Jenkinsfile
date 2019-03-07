@@ -65,6 +65,7 @@ pipeline {
             commandLineOption: "-project $WORKSPACE/neoload/test/microservices.yaml -nlweb -loadGenerators $WORKSPACE/neoload/lg/lg.yaml -nlwebToken a8e8f0c5a4f90c02bfddcb6881e7f6811da26864879a7bd6",
             scenario: 'CatalogueStandard', sharedLicense: [server: 'NeoLoad Demo License', duration: 2, vuCount: 50]
         }
+        archiveArtifacts 'results/*'
       }
     }
     stage('Stop Infrastructure') {
@@ -85,6 +86,8 @@ pipeline {
         }
       }
     }
-
+    stage('Cleanup') {
+      cleanWs()
+    }
   }
 }
