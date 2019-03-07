@@ -88,7 +88,8 @@ pipeline {
     stage('Cleanup') {
       agent{ label 'master' }
       steps {
-        archiveArtifacts 'results/*'
+        archiveArtifacts 'results/**'
+        archiveArtifacts 'Jenkinsfile'
         cleanWs()
       }
     }
