@@ -8,6 +8,7 @@ pipeline {
           steps {
             git(branch:'master',
               url:'https://github.com/microservices-demo/microservices-demo')
+            stash includes: 'deploy/docker-compose/docker-compose.yml', name: 'sockshop'
             sh 'docker-compose -f deploy/docker-compose/docker-compose.yml up -d'
           }
         }
@@ -79,8 +80,7 @@ pipeline {
         stage('Stop application'){
           agent { label 'master'}
           steps {
-            git(branch:'master',
-              url:'https://github.com/microservices-demo/microservices-demo')
+            unstash 'sockshop'
             sh 'docker-compose -f deploy/docker-compose/docker-compose.yml down'
           }
         }
