@@ -87,7 +87,10 @@ pipeline {
       }
     }
     stage('Cleanup') {
-      cleanWs()
+      agent{ label 'master' }
+      steps {
+        cleanWs()
+      }
     }
   }
 }
