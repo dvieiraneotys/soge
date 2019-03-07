@@ -8,8 +8,8 @@ pipeline {
           steps {
             git(branch:'master',
               url:'https://github.com/microservices-demo/microservices-demo')
-            stash includes: 'sockshop/catalogue/docker-compose.yml', name: 'sockshop'
-            sh 'docker-compose -f sockshop/catalogue/docker-compose.yml up -d'
+            stash includes: 'deploy/docker-compose/docker-compose.yml', name: 'sockshop'
+            sh 'docker-compose -f deploy/docker-compose/docker-compose.yml up -d'
           }
         }
         stage('Start NeoLoad infrastructure') {
@@ -26,7 +26,7 @@ pipeline {
     stage('Join Load Generators to Application') {
       agent{label 'master'}
       steps{
-        sh 'docker network connect catalogue_default docker-lg1'
+        sh 'docker network connect docker-compose_default docker-lg1'
       }
     }
     stage('API Tests') {
