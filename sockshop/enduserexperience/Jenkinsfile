@@ -19,7 +19,7 @@ pipeline {
     stage('End User Tests') {
       agent {
         dockerfile {
-          args '--user root -v /tmp:/tmp --network=lg_default'
+          args '--user root -v /tmp:/tmp --network=enduserexperience_default'
           dir 'neoload/controller'
         }
       }

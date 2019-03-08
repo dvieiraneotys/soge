@@ -1,7 +1,7 @@
 name: MicroServices
 servers:
 - name: sockshop
-  host: edge-router
+  host: localhost
   scheme: http
 scenarios:
 - name: End User Limit
