@@ -1,0 +1,34 @@
+name: MicroServices
+variables:
+- file:
+    name: neoload_token
+    path: neoload/test/data/tokens.csv
+    column_names: ["token"]
+    is_first_line_column_names: false
+servers:
+- name: sockshop
+  host: edge-router
+  scheme: http
+scenarios:
+- name: End User Limit
+  populations:
+  - name: Buyers
+    rampup_load:
+      min_users: 1
+      max_users: 200
+      increment_users: 1
+      increment_every: 1s
+      duration: 200s
+- name: End User Nominal
+  populations:
+  - name: Buyers
+    constant_load:
+      users: 10
+      duration: 2m
+      rampup: 10s
+- name: End User Unit
+  populations:
+  - name: Buyers
+    constant_load:
+      users: 1
+      duration: 100 iterations
