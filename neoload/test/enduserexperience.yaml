@@ -1,10 +1,4 @@
 name: MicroServices
-variables:
-- file:
-    name: neoload_token
-    path: neoload/test/data/tokens.csv
-    column_names: ["token"]
-    is_first_line_column_names: false
 servers:
 - name: sockshop
   host: edge-router

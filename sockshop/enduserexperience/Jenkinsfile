@@ -25,7 +25,7 @@ pipeline {
         sh 'docker network connect enduserexperience_default docker-lg1'
       }
     }
-    stage('API Tests') {
+    stage('End User Tests') {
       agent {
         dockerfile {
           args '--user root -v /tmp:/tmp --network=lg_default'
