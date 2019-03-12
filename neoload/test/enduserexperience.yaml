@@ -17,7 +17,7 @@ scenarios:
   populations:
   - name: Buyers
     constant_load:
-      users: 5
+      users: 3
       duration: 5m
       rampup: 1m
 - name: End User Unit
